@@ -1,0 +1,9 @@
+#zuul.routes.authentication-service.url=http://authentication-service:8090
+#zuul.routes.stock-service.url=http://stock-service:8087
+
+zuul.routes.authentication-service.url=http://localhost:8090
+#zuul.routes.stock-service.url=http://localhost:8087
+
+server.port=8095
+spring.application.name=zuul-gateway-service
+zuul.sensitiveHeaders=Cookie,set-Cookie

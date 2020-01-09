@@ -1,0 +1,14 @@
+#
+#zuul.routes.authentication-service.url=http://authentication-service:8090
+#zuul.routes.signup-service.url=http://signup-service:8091
+#zuul.routes.display-detail-service.url=http://display-detail-service:8092
+#zuul.routes.payment-service.url=http://payment-service:8093
+
+zuul.routes.authentication-service.url=http://localhost:8090
+zuul.routes.signup-service.url=http://localhost:8091
+zuul.routes.display-detail-service.url=http://localhost:8092
+zuul.routes.payment-service.url=http://localhost:8093
+
+server.port=8095
+spring.application.name=zuul-gateway-service
+zuul.sensitiveHeaders=Cookie,set-Cookie

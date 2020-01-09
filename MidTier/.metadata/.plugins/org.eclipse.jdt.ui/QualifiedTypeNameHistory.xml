@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.bean.User"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.bean.Role"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.NotEmpty"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.EnableAspectJAutoProxy"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="com.thoughtworks.xstream.mapper.Mapper.Null"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.bean.sector"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.exception.InvalidDetailsException"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.service.ImportService"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.service.ManageService"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.bean.Company"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.bean.SummaryDTO"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.bean.StockExchange"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.sql.Time"/>
+    <fullyQualifiedTypeName name="com.cognizant.stockservice.service.ChartService"/>
+</qualifiedTypeNameHistroy>

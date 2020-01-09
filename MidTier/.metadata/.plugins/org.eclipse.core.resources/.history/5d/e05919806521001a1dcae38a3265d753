@@ -1,0 +1,5 @@
+package com.cognizant.stockservice.service;
+
+public class ManageService {
+
+}

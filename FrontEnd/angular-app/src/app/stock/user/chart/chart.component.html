@@ -1,0 +1,17 @@
+<body>
+    <div class="row">
+        <div class="col-3">Enter the Company Code <input type="text" id="companyCode" placeholder="Enter the company code" #companyCode /></div>
+        <div class="col-3">Start Time <input type="time" step="1" value="00:00:01" #time /></div>
+        <div class="col-3">End Time<input type="time" step="1" value="00:00:01" #endtime /></div>
+        <div class="col-3"><a class="btn btn-dark text-white" (click)="timeChange(companyCode.value,time.value,endtime.value)">done</a></div>
+    </div>
+    <div class="card shadow col-lg-6">
+        <p class="h4 card-header">Chart</p>
+        <div class="card-body bg-light">
+            <div style="display: block">
+                <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</body>

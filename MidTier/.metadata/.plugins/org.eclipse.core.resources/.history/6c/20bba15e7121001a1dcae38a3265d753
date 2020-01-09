@@ -1,0 +1,12 @@
+package com.cognizant.stockservice.exception;
+
+/**
+ * @author 805917
+ *
+ */
+public class InvalidDetailsException extends Exception {
+
+	public InvalidDetailsException(String message) {
+	}
+
+}

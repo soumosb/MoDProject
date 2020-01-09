@@ -1,0 +1,75 @@
+<div class="jumbotron">
+    <p class="text-light">Search Companies</p>
+    <div class="input-group px-5">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="material-icons">search</i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Search companies" (input)="onSearchText($event)">
+    </div>
+</div>
+<div class="row ">
+    <span class="ml-auto pr-5"> <button routerLink="edit">Edit User Profile</button></span>
+</div>
+<span class='row'>
+    <h3 class="mt-5  mx-auto">List of Companies</h3>
+</span>
+<div class="container col-lg-9 col-md-9 col-sm-9">
+    <div *ngIf="!search">
+        <table class="table overflow-auto p-2">
+            <thead>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                    Turnover
+                </th>
+                <th>
+                    CEO
+                </th>
+                <th>
+                    Brief
+                </th>
+                <th>StockCode</th>
+                <th></th>
+            </thead>
+
+            <tbody *ngFor="let company of companies">
+
+                <td>{{company.name}}</td>
+                <td>{{company.turnOver}}</td>
+                <td>{{company.ceo}}</td>
+                <td>{{company.briefWriteup}}</td>
+                <td>{{company.stockCode}}</td>
+                <td><button [routerLink]="['/chart',company.id]">View Stock</button></td>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="search">
+        <table class="table overflow-auto p-2">
+            <thead>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                    Turnover
+                </th>
+                <th>
+                    CEO
+                </th>
+                <th>
+                    Brief
+                </th>
+                <th>StockCode</th>
+                <th></th>
+            </thead>
+            <tbody *ngFor="let company of companyList">
+                <td>{{company.name}}</td>
+                <td>{{company.turnOver}}</td>
+                <td>{{company.ceo}}</td>
+                <td>{{company.briefWriteup}}</td>
+                <td>{{company.stockCode}}</td>
+                <td><button (click)="viewStock(company.id)">View Stock</button></td>
+            </tbody>
+        </table>
+    </div>
+</div>

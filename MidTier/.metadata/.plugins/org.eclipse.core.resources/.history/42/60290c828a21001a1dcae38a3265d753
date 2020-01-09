@@ -1,0 +1,5 @@
+package com.cognizant.stockservice.bean;
+
+public class SummaryDTO {
+
+}

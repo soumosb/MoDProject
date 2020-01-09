@@ -1,0 +1,30 @@
+<!-- <p>import-excel works!</p> -->
+<div *ngIf="loader">
+    <img class="loading">
+</div>
+<span class='row'><h3 class="mt-5  mx-auto">Upload Stock Price Details of a Single Company</h3></span>
+<span class='row'>
+    <div class="mt-5 mb-5 row mx-auto">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <input class="border" type="file" name="upload" (change)="onFileChange($event)" accept=".xlsx"/>
+                <button type="submit">Submit</button>
+            </form>
+    </div>
+</span>
+<div class="alert alert-danger " *ngIf="valid">Choose Excel file !!</div>
+<div class="alert alert-danger " *ngIf="error!=''"> Invalid Details in Excel Data</div>
+<div *ngIf="uploded">
+    <div class="card p-2">
+        <h3 class="mx-auto">Summary Of Upload</h3>
+        <div class="row pb-2 col-lg-9 col-md-9 col-sm-12">
+            <span class="col-5">Company Name: {{summary.company.name}}</span>
+            <span class="col-7">Company Stock Exchage: {{summary.stockExchange}}</span>
+        </div>
+        <div class="row col-lg-9 col-md-9 col-sm-12">
+            <span class="col-4">No.of.Records: {{summary.record}}</span>
+            <span class="col-4">From : {{summary.startDate|date:'dd-MM-yyyy'}}</span>
+            <span class="col-4">End : {{summary.endDate|date:'dd-MM-yyyy'}}</span>
+        </div>
+    </div>
+</div>
+<span class="pl-5 mt-5 pt-5"><h5>For Sample Excel <a href="assets/stock_data.xlsx"><ins>Click here ...</ins></a></h5></span>

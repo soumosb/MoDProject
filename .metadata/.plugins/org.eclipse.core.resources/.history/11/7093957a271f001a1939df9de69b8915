@@ -1,0 +1,5 @@
+package com.cognizant.authentication.model;
+
+public class Role {
+
+}

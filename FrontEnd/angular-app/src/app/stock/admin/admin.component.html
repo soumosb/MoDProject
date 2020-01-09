@@ -1,0 +1,32 @@
+<!-- <p>admin works!</p> -->
+<div class='container col-lg-9 col-md-9 col-sm-12 mt-3 '>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-light"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item pr-5 ">
+                    <span class=' text-light'><a (click)="importDatas()">Import Data</a> </span>
+                </li>
+                <li class="nav-item pr-5">
+                    <span class=' text-light'><a (click)="manageCompany()">Manage Company</a> </span>
+                </li>
+                <li class="nav-item pr-5">
+                    <span class=' text-light'><a (click)="manageExchange()">Manage Exchange</a> </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container col-lg-9 col-md-9 col-sm-12">
+    <div *ngIf="importData">
+        <app-import-excel></app-import-excel>
+    </div>
+    <div *ngIf="company">
+        <app-manage-companies></app-manage-companies>
+    </div>
+    <div *ngIf="exchange">
+        <app-manage-exchange></app-manage-exchange>
+    </div>
+</div>

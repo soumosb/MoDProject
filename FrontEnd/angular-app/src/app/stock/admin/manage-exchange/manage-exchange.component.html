@@ -1,0 +1,26 @@
+<!-- <p>manage-exchange works!</p> -->
+<span class='row'><h3 class="mt-5  mx-auto">List of Stock Exchage</h3></span>
+<div class="container col-lg-9 col-md-9 col-sm-9">
+    <table class="table overflow-auto p-2">
+        <thead>
+            <th>
+                Stock Exchange
+            </th>
+            <th>
+                Brief
+            </th>
+            <th>
+                Contact Address
+            </th>
+            <th>
+                Remarks
+            </th>
+        </thead>
+        <tbody *ngFor="let exchange of exchanges">
+            <td>{{exchange.stockExchange}}</td>
+            <td>{{exchange.brief}}</td>
+            <td>{{exchange.contactAddress}}</td>
+            <td>{{exchange.remarks}}</td>
+        </tbody>
+    </table>
+</div>

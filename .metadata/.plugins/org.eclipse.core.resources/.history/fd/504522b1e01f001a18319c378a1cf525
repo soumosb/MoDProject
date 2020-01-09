@@ -1,0 +1,5 @@
+package com.cognizant.authentication.controller;
+
+public class UserController {
+
+}

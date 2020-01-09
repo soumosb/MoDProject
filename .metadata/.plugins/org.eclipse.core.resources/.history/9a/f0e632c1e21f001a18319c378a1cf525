@@ -1,0 +1,63 @@
+package com.cognizant.authentication.service;
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.authentication.model.User;
+import com.cognizant.authentication.repository.RoleRepository;
+import com.cognizant.authentication.repository.UserRepository;
+import com.cognizant.authentication.security.AppUser;
+
+/**
+ * @author 805831
+ *
+ */
+@Service
+public class AppUserDetailsService implements UserDetailsService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(AppUserDetailsService.class);
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	public AppUserDetailsService(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		User user = userRepository.findByUserNameAndConfirmed(userName,true);
+		LOGGER.info("Inside Service");
+		if(user==null) {
+			throw new UsernameNotFoundException("Username is not found");
+		}else {
+			return new AppUser(user);
+		}
+		
+	}
+
+	public void addUser(@Valid User user) {
+		// TODO Auto-generated method stub
+		User users = userRepositry.findByUsername(user.getUserName());
+		if (users == null) {
+			System.out.println(user);
+			user.setPassword(passwordEncoder().encode(user.getPassword()));
+			Role role = roleRepositry.findById(2).get();
+			user.setRoleList(new HashSet<Role>());
+			user.getRoleList().add(role);
+			System.out.println(user);
+			userRepositry.save(user);
+		} else {
+			throw new UsernameNotFoundException("User ALready Exists");
+		}
+	}
+	
+}

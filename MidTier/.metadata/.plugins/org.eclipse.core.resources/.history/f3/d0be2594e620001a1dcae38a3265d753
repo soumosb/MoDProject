@@ -1,0 +1,20 @@
+package com.cognizant.stockservice.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.cognizant.authentication.model.User;
+
+/**
+ * @author 805831
+ *
+ */
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+	/*
+	 * 
+	 * */
+	User findByUserNameAndConfirmed(String userName, Boolean confirmed);
+
+	User findByUserName(String userName);
+}

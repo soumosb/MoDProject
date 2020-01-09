@@ -1,0 +1,11 @@
+package com.cognizant.stockservice.repository;
+
+import org.aspectj.apache.bcel.util.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cognizant.stockservice.bean.Role;
+import com.cognizant.stockservice.bean.StockPrice;
+
+public interface StockPriceRepository extends JpaRepository<StockPrice, Integer> {
+
+}

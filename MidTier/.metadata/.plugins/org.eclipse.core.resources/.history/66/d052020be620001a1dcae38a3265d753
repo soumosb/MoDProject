@@ -1,0 +1,56 @@
+
+package com.cognizant.stockservice.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.cognizant.stockservice.bean.Role;
+import com.cognizant.stockservice.bean.User;
+import com.cognizant.stockservice.exception.UserAlreadyExistsException;
+import com.cognizant.stockservice.repository.RoleRepository;
+import com.cognizant.stockservice.repository.UserRepository;
+
+
+
+@Service
+public class AppUserDetailsService implements UserDetailsService {
+
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
+
+	public AppUserDetailsService(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepository.findByUsername(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found !!!");
+		}
+
+		return new AppUser(user);
+	}
+
+	public void signUp(User newUser) throws UserAlreadyExistsException {
+		System.out.println(newUser);
+		User user = userRepository.findByUsername(newUser.getUsername());
+		System.out.println(user);
+		if (user != null) {
+			throw new UserAlreadyExistsException();
+		} else {
+			Role role = roleRepository.findById(2).get();
+			System.out.println(role);
+			newUser.setRole(role);
+			//newUser.getRoleList().add(role);
+			userRepository.save(newUser);
+		}
+	}
+
+}

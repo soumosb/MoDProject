@@ -1,0 +1,28 @@
+<!-- <p>manage-companies works!</p> -->
+<span class='row'><h3 class="mt-5  mx-auto">List of Companies</h3></span>
+<div class="container col-lg-9 col-md-9 col-sm-9">
+    <table class="table overflow-auto p-2">
+        <thead>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Turnover
+            </th>
+            <th>
+                Ceo
+            </th>
+            <th>
+                Brief
+            </th>
+            <th>StockCode</th>
+        </thead>
+        <tbody *ngFor="let company of companies">
+            <td>{{company.name}}</td>
+            <td>{{company.turnOver}}</td>
+            <td>{{company.ceo}}</td>
+            <td>{{company.briefWriteup}}</td>
+            <td>{{company.stockCode}}</td>
+        </tbody>
+    </table>
+</div>

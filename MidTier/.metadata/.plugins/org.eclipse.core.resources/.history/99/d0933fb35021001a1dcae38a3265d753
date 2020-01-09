@@ -1,0 +1,23 @@
+package com.cognizant.stockservice.bean;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.thoughtworks.xstream.mapper.Mapper.Null;
+@Entity
+@Table(name="sector")
+public class sector {
+	@Id
+	@Column(name = "sc_id")
+	@NotNull
+	private int id;
+	@NotNull
+	@Column(name="sc_name")
+	private String name;
+	@NotNull
+	@Column(name="sc_brief")
+	private String brief;
+}

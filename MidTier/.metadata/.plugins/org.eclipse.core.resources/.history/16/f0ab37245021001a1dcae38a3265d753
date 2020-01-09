@@ -1,0 +1,12 @@
+package com.cognizant.stockservice.bean;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+public class sector {
+	@Id
+	@Column(name = "sp_id")
+	@NotNull
+	private int id;
+}

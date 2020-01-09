@@ -1,0 +1,11 @@
+package com.cognizant.stockservice.bean;
+
+import java.util.Date;
+
+public class SummaryDTO {
+
+	private Company company;
+	private int record;
+	private Date startDate;
+	private Date endDate;
+}

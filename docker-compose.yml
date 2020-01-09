@@ -1,0 +1,56 @@
+version: '3'
+services:
+  stock-market-charting-mysql:
+    image: mysql:8.0.18
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - d:/stockMarketChartingdb:/var/lib/mysql
+      - ./dbscripts:/docker-entrypoint-initdb.d
+  eureka-server:
+    image: eureka-server-app
+    build: MidTier/eureka-server/.
+    ports:
+        - 8761:8761
+    depends_on:
+        - stock-market-charting-mysql
+    links:
+        - stock-market-charting-mysql
+  authentication-service:
+    image: authentication-app
+    build: MidTier/authentication-service/.
+    ports:
+      - 8075:8090
+    depends_on:
+      - stock-market-charting-mysql
+      - eureka-server
+    links:
+      - stock-market-charting-mysql
+      - eureka-server
+  stock-service:
+    image: stock-app
+    build: MidTier/stock-service/.
+    ports:
+      - 8076:8087
+    depends_on:
+      - stock-market-charting-mysql
+      - eureka-server
+    links:
+      - stock-market-charting-mysql
+      - eureka-server    
+  zuul-gateway-service:
+    image: zuul-gateway-service-app
+    build: MidTier/zuul-gateway/.
+    ports:
+      - 8095:8095
+    links:
+      - authentication-service
+  angular-learning:
+    image: angular-app
+    build: FrontEnd/angular-learning/.
+    ports:
+        - 4200:80
+    links:
+        - zuul-gateway-service

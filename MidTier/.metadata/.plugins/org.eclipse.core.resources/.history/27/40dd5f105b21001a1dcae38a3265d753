@@ -1,0 +1,63 @@
+package com.cognizant.stockservice.controller;
+
+import java.io.IOException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.cognizant.stockservice.bean.StockPrice;
+import com.cognizant.stockservice.repository.CompanyRepository;
+import com.cognizant.stockservice.repository.StockExchangeRepository;
+import com.cognizant.stockservice.repository.StockPriceRepository;
+
+@RestController
+@RequestMapping("/import")
+public class ImportController {
+
+	@Autowired
+	StockPriceRepository stockPriceRepository;
+	@Autowired
+	private CompanyRepository companyRepository;
+	@Autowired
+	StockExchangeRepository stockExchangeRepository;
+
+	@SuppressWarnings("deprecation")
+	@PostMapping
+	public void mapReapExcelDatatoDB(@RequestParam("file") MultipartFile reapExcelDataFile)
+			throws IOException, ParseException {
+		DataFormatter formatter = new DataFormatter();
+		XSSFWorkbook workbook = new XSSFWorkbook(reapExcelDataFile.getInputStream());
+		XSSFSheet worksheet = workbook.getSheetAt(0);
+		System.out.println(workbook);
+
+		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
+			StockPrice stockPrice = new StockPrice();
+
+			XSSFRow row = worksheet.getRow(i);
+			
+			stockPrice.setCompanyCode(formatter.formatCellValue(row.getCell(0)));
+			stockPrice.setCurrentPrice((float) row.getCell(2).getNumericCellValue());
+			stockPrice.setStockExchange( formatter.formatCellValue(row.getCell(1)));
+			stockPrice.setDate(row.getCell(3).getDateCellValue());
+			
+			DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+			Date date = timeFormat.parse(formatter.formatCellValue(row.getCell(4)));
+			Time time = new Time(date.getHours(), date.getMinutes(), date.getSeconds());
+			stockPrice.setTime(time);
+			stockPriceRepository.save(stockPrice);
+		}
+	}
+}

@@ -1,0 +1,30 @@
+package com.cognizant.stockservice.bean;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "company")
+public class Company {
+
+	@Id
+	@Column(name = "co_id")
+	@NotNull
+	private long id;
+	@NotNull
+	@Column(name = "co_turn_over")
+	private long turnOver;
+	@Column(name = "co_ceo")
+	@NotNull
+	private String ceo;
+	@Column(name = "co_brief_writeup")
+	@NotNull
+	private String briefWriteup;
+
+	
+
+}

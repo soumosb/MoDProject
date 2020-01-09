@@ -1,0 +1,7 @@
+package com.cognizant.authentication.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleRepository extends JpaRepository<Long, Id> {
+
+}
